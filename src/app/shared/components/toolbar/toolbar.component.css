@@ -1,0 +1,57 @@
+#toolbar {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #8080801c;
+
+  .tools {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    .toolbar-dropper, .toolbar-upload-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: transparent;
+      transition: 0.5s border ease;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid cornflowerblue;
+      }
+
+      img {
+        max-width: 25px;
+        width: 100%;
+        display: block;
+      }
+    }
+
+    .toolbar-upload-image {
+      input[type="file"] {
+        display: none;
+      }
+    }
+  }
+
+  .toolbar-color {
+    max-width: 200px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .color-box {
+      width: 18px;
+      height: 18px;
+      background-color: black;
+    }
+  }
+}
