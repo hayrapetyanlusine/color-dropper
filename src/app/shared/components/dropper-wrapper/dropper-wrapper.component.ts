@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {CanvasComponent} from "../canvas/canvas.component";
-import {ToolbarComponent} from "../toolbar/toolbar.component";
-import {UploadFileComponent} from "../upload-file/upload-file.component";
-import {NgIf} from "@angular/common";
-import {File} from "../../../infrastructure/interface/file";
+import { Component } from '@angular/core';
+import { CanvasComponent } from "../canvas/canvas.component";
+import { ToolbarComponent } from "../toolbar/toolbar.component";
+import { UploadFileComponent } from "../upload-file/upload-file.component";
+import { NgIf } from "@angular/common";
+import { File } from "../../../infrastructure/interface/file";
 
 @Component({
   selector: 'app-dropper-wrapper',
@@ -15,10 +15,10 @@ import {File} from "../../../infrastructure/interface/file";
     NgIf
   ],
   template: `
-    <app-toolbar *ngIf="fileData"></app-toolbar>
+    <app-toolbar *ngIf="fileData" (changeFile)="getFileData($event)"></app-toolbar>
     <app-canvas *ngIf="fileData" [imageData]="fileData"></app-canvas>
 
-    <app-upload-file *ngIf="!fileData" (fileSelected)="getFileData($event)" ></app-upload-file>
+    <app-upload-file *ngIf="!fileData" (fileSelected)="getFileData($event)"></app-upload-file>
   `,
   styleUrl: './dropper-wrapper.component.css'
 })
