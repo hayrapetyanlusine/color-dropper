@@ -21,6 +21,8 @@
       src="../../../../assets/copy.svg"
       alt="copy"
       appTooltip tooltip="copy"
+      (click)="copyColorToClipboard()"
     />
+    <span *ngIf="isCopied" class="copied-message">Coped</span>
   </div>
 </div>

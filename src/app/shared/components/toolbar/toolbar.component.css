@@ -47,6 +47,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
 
     .color-box {
       width: 18px;
@@ -61,6 +62,12 @@
 
     img {
       cursor: pointer;
+    }
+
+    .copied-message {
+      position: absolute;
+      top: -20px;
+      right: 10px;
     }
   }
 }

@@ -2,13 +2,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TooltipDirective } from "../../directives/tooltip.directive";
 import { File } from "../../../infrastructure/interface/file";
 import { FileInputDirective } from "../../directives/file-input.directive";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
   imports: [
     TooltipDirective,
-    FileInputDirective
+    FileInputDirective,
+    NgIf
   ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css'
@@ -19,6 +21,16 @@ export class ToolbarComponent {
   @Input() color!: string;
 
   isActive: boolean = false;
+  isCopied: boolean = false;
+
+  copyColorToClipboard(): void {
+    navigator.clipboard.writeText(this.color)
+      .then(() => {
+        this.isCopied = true;
+        setTimeout(() => this.isCopied = false, 2000);
+      })
+      .catch((err) => console.log(err));
+  }
 
   onFileChange(newFile: File): void {
     this.changeFile.emit(newFile);
