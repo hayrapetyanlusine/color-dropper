@@ -20,7 +20,7 @@
       align-items: center;
       justify-content: center;
       border: transparent;
-      transition: 0.5s border ease;
+      transition: border 0.7s ease, background 0.7s ease;
       cursor: pointer;
 
       &:hover {
@@ -52,6 +52,15 @@
       width: 18px;
       height: 18px;
       background-color: black;
+    }
+
+    .color-value-hex {
+      max-width: 120px;
+      width: 100%;
+    }
+
+    img {
+      cursor: pointer;
     }
   }
 }

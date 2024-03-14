@@ -14,19 +14,23 @@ import { File } from "../../../infrastructure/interface/file";
     UploadFileComponent,
     NgIf
   ],
-  template: `
-    <app-toolbar *ngIf="fileData" (changeFile)="getFileData($event)"></app-toolbar>
-    <app-canvas *ngIf="fileData" [imageData]="fileData"></app-canvas>
-
-    <app-upload-file *ngIf="!fileData" (fileSelected)="getFileData($event)"></app-upload-file>
-  `,
+  templateUrl: './dropper-wrapper.component.html',
   styleUrl: './dropper-wrapper.component.css'
 })
 export class DropperWrapperComponent {
   fileData: File | null = null;
+  activeCursor: boolean = false;
+  color: string = "rgb(0,0,0)";
 
   getFileData(data: File): void {
     this.fileData = data;
   }
 
+  isActiveCursor(value: boolean): void {
+    this.activeCursor = value;
+  }
+
+  chooseColor(color: string): void {
+    this.color = color;
+  }
 }

@@ -3,4 +3,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  canvas {
+    position: relative;
+  }
+
+  .cursor {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    will-change: transform;
+    cursor: none;
+    line-height: 140px;
+    user-select: none;
+    padding: 30px;
+  }
+
+  .cursor-active {
+    cursor: url('../../../../assets/color-picker.svg'), auto;
+  }
 }
