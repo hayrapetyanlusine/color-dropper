@@ -1,7 +1,7 @@
 import { ElementRef } from '@angular/core';
 import { canvasMaxHeight, canvasMaxWidth } from "../constants";
 
-export function drawImage(file: File, canvas: ElementRef<HTMLCanvasElement>): void {
+export function drawImage(file: any, canvas: ElementRef<HTMLCanvasElement>): void {
   const reader: FileReader = new FileReader();
   const img: HTMLImageElement = new Image();
   const ctx: CanvasRenderingContext2D = canvas.nativeElement.getContext('2d')!;

@@ -2,23 +2,22 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
+  inject,
   Input,
   OnChanges,
-  Output,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { drawImage } from "../../functions/drawImage";
-import { NgClass, NgIf, NgStyle } from "@angular/common";
+import { NgClass, NgStyle } from "@angular/common";
 import { getColorAtPoint } from "../../functions/getColorAtPoint";
 import { ColorData } from "../../../infrastructure/interface/colorData";
+import { DataService } from "../../../services/data.service";
 
 @Component({
   selector: 'app-canvas',
   standalone: true,
   imports: [
-    NgIf,
     NgStyle,
     NgClass
   ],
@@ -27,18 +26,17 @@ import { ColorData } from "../../../infrastructure/interface/colorData";
 })
 export class CanvasComponent implements AfterViewInit, OnChanges {
   @ViewChild('imgCanvas') canvas!: ElementRef<HTMLCanvasElement>;
-  @Output() color: EventEmitter<string> = new EventEmitter<string>();
   @Input() imageData!: any;
-  @Input() isActiveCursor!: boolean;
 
   initialRender: boolean = true;
   isMouseOver: boolean = false;
   cursorStyle: { [key: string]: any } = {};
 
+  dataService = inject(DataService);
+
   ngAfterViewInit(): void {
-    if (this.imageData) {
-      drawImage(this.imageData, this.canvas);
-    }
+    drawImage(this.dataService.fileData(), this.canvas);
+
     this.initialRender = false;
   }
 
@@ -51,7 +49,7 @@ export class CanvasComponent implements AfterViewInit, OnChanges {
   onMouseMove(evt: MouseEvent): void {
     this.isMouseOver = true;
 
-    if(this.isActiveCursor) {
+    if (this.dataService.activeCursor()) {
       const {red, green, blue}: ColorData = getColorAtPoint(evt, this.canvas);
 
       const translateX: number = evt.clientX - 40 / 2;
@@ -69,8 +67,10 @@ export class CanvasComponent implements AfterViewInit, OnChanges {
   }
 
   onClick(evt: MouseEvent): void {
-    const {red, green, blue}: ColorData = getColorAtPoint(evt, this.canvas);
+    if (this.dataService.activeCursor()) {
+      const {red, green, blue}: ColorData = getColorAtPoint(evt, this.canvas);
 
-    this.color.emit(`rgb(${red}, ${green}, ${blue})`);
+      this.dataService.updateColor(`rgb(${red}, ${green}, ${blue})`);
+    }
   }
 }

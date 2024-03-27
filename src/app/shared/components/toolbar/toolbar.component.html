@@ -1,13 +1,13 @@
 <div id="toolbar">
   <div class="tools">
-    <button
-      class="toolbar-dropper"
-      [style.background]="isActive ? 'lightblue' : ''"
-      appTooltip tooltip="dropper"
-      (click)="addCursor()"
+    <button class="toolbar-dropper"
+            [style.background]="dataService.activeCursor() ? 'lightblue' : ''"
+            appTooltip tooltip="dropper"
+            (click)="addCursor()"
     >
       <img src="../../../../assets/color-picker.svg" alt="color-picker"/>
     </button>
+
     <label class="toolbar-upload-image" appTooltip tooltip="upload">
       <img src="../../../../assets/file-upload.svg" alt="file-upload"/>
       <input type="file" appFileInput (fileSelected)="onFileChange($event)">
@@ -15,14 +15,15 @@
   </div>
 
   <div class="toolbar-color">
-    <div class="color-box" [style.background-color]="color"></div>
-    <span class="color-value-hex">{{ color }}</span>
-    <img
-      src="../../../../assets/copy.svg"
-      alt="copy"
-      appTooltip tooltip="copy"
-      (click)="copyColorToClipboard()"
+    <div class="color-box" [style.background-color]="dataService.color()"></div>
+    <span class="color-value-hex">{{ dataService.color() }}</span>
+    <img src="../../../../assets/copy.svg"
+         alt="copy"
+         appTooltip tooltip="copy"
+         (click)="copyColorToClipboard()"
     />
-    <span *ngIf="isCopied" class="copied-message">Coped</span>
+    @if (isCopied) {
+      <span class="copied-message">Coped</span>
+    }
   </div>
 </div>

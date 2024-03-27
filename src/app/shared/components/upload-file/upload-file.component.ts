@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { File } from "../../../infrastructure/interface/file";
 import { FileInputDirective } from "../../directives/file-input.directive";
+import { DataService } from "../../../services/data.service";
 
 @Component({
   selector: 'app-upload-file',
@@ -14,7 +15,10 @@ import { FileInputDirective } from "../../directives/file-input.directive";
         Drag files here or press Upload
         <label>
           Upload
-          <input type="file" appFileInput (fileSelected)="onFileSelected($event)">
+          <input type="file"
+                 appFileInput
+                 (fileSelected)="onFileSelected($event)"
+          >
         </label>
       </div>
     </div>
@@ -22,10 +26,10 @@ import { FileInputDirective } from "../../directives/file-input.directive";
   styleUrl: './upload-file.component.css'
 })
 export class UploadFileComponent {
-  @Output() fileSelected: EventEmitter<File> = new EventEmitter<File>();
+  dataService = inject(DataService);
 
   onFileSelected(file: File): void {
-    this.fileSelected.emit(file);
+    this.dataService.updateFileData(file);
   }
 
   onDrop(evt: DragEvent): void {
@@ -35,7 +39,7 @@ export class UploadFileComponent {
     if (!droppedFile.type.includes("image")) {
       alert("Only image files are allowed");
     } else {
-      this.fileSelected.emit(droppedFile);
+      this.dataService.updateFileData(droppedFile);
     }
   }
 

@@ -1,17 +1,16 @@
-<canvas
-  #imgCanvas
-  width="860px"
-  height="420px"
-  (mousemove)="onMouseMove($event)"
-  (mouseleave)="onMouseLeave()"
-  (click)="onClick($event)"
-  [ngClass]="{'cursor-active': isActiveCursor}"
-></canvas>
+<canvas #imgCanvas
+        width="860px"
+        height="420px"
+        (mousemove)="onMouseMove($event)"
+        (mouseleave)="onMouseLeave()"
+        (click)="onClick($event)"
+        [ngClass]="{'cursor-active': dataService.activeCursor()}">
+</canvas>
 
-<img
-  class="cursor"
-  *ngIf="isActiveCursor && isMouseOver"
-  [ngStyle]="cursorStyle"
-  src="../../../../assets/color-picker.svg"
-  alt="color-picker"
-/>
+@if (dataService.activeCursor() && isMouseOver) {
+  <img class="cursor"
+       [ngStyle]="cursorStyle"
+       src="../../../../assets/color-picker.svg"
+       alt="color-picker"
+  />
+}
