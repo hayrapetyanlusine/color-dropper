@@ -15,9 +15,8 @@ import { DataService } from "../../../services/data.service";
   styleUrl: './toolbar.component.css'
 })
 export class ToolbarComponent {
+  dataService: DataService = inject(DataService);
   isCopied: boolean = false;
-
-  dataService = inject(DataService);
 
   copyColorToClipboard(): void {
     navigator.clipboard.writeText(this.dataService.color())

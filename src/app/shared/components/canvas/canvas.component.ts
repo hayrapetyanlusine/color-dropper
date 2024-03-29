@@ -2,8 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  inject,
-  Input,
+  inject, input,
   OnChanges,
   SimpleChanges,
   ViewChild
@@ -25,14 +24,14 @@ import { DataService } from "../../../services/data.service";
   styleUrl: './canvas.component.css'
 })
 export class CanvasComponent implements AfterViewInit, OnChanges {
-  @ViewChild('imgCanvas') canvas!: ElementRef<HTMLCanvasElement>;
-  @Input() imageData!: any;
+  dataService: DataService = inject(DataService);
 
+  @ViewChild('imgCanvas') canvas!: ElementRef<HTMLCanvasElement>;
+  imageData = input();
+
+  cursorStyle: { [key: string]: any } = {};
   initialRender: boolean = true;
   isMouseOver: boolean = false;
-  cursorStyle: { [key: string]: any } = {};
-
-  dataService = inject(DataService);
 
   ngAfterViewInit(): void {
     drawImage(this.dataService.fileData(), this.canvas);
@@ -42,7 +41,7 @@ export class CanvasComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['imageData'] && !this.initialRender) {
-      drawImage(this.imageData, this.canvas);
+      drawImage(this.imageData(), this.canvas);
     }
   }
 
