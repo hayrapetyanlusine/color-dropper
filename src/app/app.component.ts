@@ -5,7 +5,7 @@ import { DropperLayoutComponent } from "./shared/components/dropper-layout.compo
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DropperLayoutComponent],
+  imports: [DropperLayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -24,14 +24,14 @@ import { DataService } from "../../../services/data.service";
   styleUrl: './canvas.component.css'
 })
 export class CanvasComponent implements AfterViewInit, OnChanges {
-  dataService: DataService = inject(DataService);
+  dataService = inject(DataService);
 
   @ViewChild('imgCanvas') canvas!: ElementRef<HTMLCanvasElement>;
   imageData = input();
 
   cursorStyle: { [key: string]: any } = {};
-  initialRender: boolean = true;
-  isMouseOver: boolean = false;
+  initialRender = true;
+  isMouseOver = false;
 
   ngAfterViewInit(): void {
     drawImage(this.dataService.fileData(), this.canvas);

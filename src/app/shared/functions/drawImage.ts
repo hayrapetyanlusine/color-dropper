@@ -2,9 +2,9 @@ import { ElementRef } from '@angular/core';
 import { canvasMaxHeight, canvasMaxWidth } from "../constants";
 
 export function drawImage(file: any, canvas: ElementRef<HTMLCanvasElement>): void {
-  const reader: FileReader = new FileReader();
-  const img: HTMLImageElement = new Image();
-  const ctx: CanvasRenderingContext2D = canvas.nativeElement.getContext('2d')!;
+  const reader = new FileReader();
+  const img = new Image();
+  const ctx = canvas.nativeElement.getContext('2d')!;
 
   reader.readAsDataURL(file);
   reader.onload = (event: ProgressEvent<FileReader>): void => {
@@ -14,12 +14,12 @@ export function drawImage(file: any, canvas: ElementRef<HTMLCanvasElement>): voi
   };
 
   img.onload = (): void => {
-    const scaleX: number = canvasMaxWidth / img.width;
-    const scaleY: number = canvasMaxHeight / img.height;
-    const scale: number = Math.min(scaleX, scaleY);
+    const scaleX = canvasMaxWidth / img.width;
+    const scaleY = canvasMaxHeight / img.height;
+    const scale = Math.min(scaleX, scaleY);
 
-    const imgWidth: number = img.width * scale;
-    const imgHeight: number = img.height * scale;
+    const imgWidth = img.width * scale;
+    const imgHeight = img.height * scale;
 
     canvas.nativeElement.width = imgWidth;
     canvas.nativeElement.height = imgHeight;
