@@ -1,5 +1,5 @@
 import { ElementRef } from '@angular/core';
-import { ColorData } from "../../infrastructure/interface/colorData";
+import { ColorData } from "../../interface/colorData";
 
 export function getColorAtPoint(evt: MouseEvent, canvas: ElementRef<HTMLCanvasElement>): ColorData {
   const ctx = canvas.nativeElement.getContext('2d')!;

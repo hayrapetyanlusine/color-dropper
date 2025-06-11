@@ -1,5 +1,5 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
-import { File } from "../../infrastructure/interface/file";
+import { File } from "../../interface/file";
 
 @Directive({
   selector: '[appFileInput]',

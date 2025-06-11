@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TooltipDirective } from "../../directives/tooltip.directive";
-import { File } from "../../../infrastructure/interface/file";
+import { File } from "../../../interface/file";
 import { FileInputDirective } from "../../directives/file-input.directive";
 import { DataService } from "../../../services/data.service";
 

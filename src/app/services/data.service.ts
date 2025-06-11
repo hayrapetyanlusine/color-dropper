@@ -1,5 +1,5 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
-import { File } from "../infrastructure/interface/file";
+import { Injectable, signal } from '@angular/core';
+import { File } from "../interface/file";
 
 @Injectable({
   providedIn: 'root'

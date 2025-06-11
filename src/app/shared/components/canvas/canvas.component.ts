@@ -10,7 +10,7 @@ import {
 import { drawImage } from "../../functions/drawImage";
 import { NgClass, NgStyle } from "@angular/common";
 import { getColorAtPoint } from "../../functions/getColorAtPoint";
-import { ColorData } from "../../../infrastructure/interface/colorData";
+import { ColorData } from "../../../interface/colorData";
 import { DataService } from "../../../services/data.service";
 
 @Component({
