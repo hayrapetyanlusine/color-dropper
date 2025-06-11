@@ -1,16 +1,17 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
+import { Directive, ElementRef, inject, output } from '@angular/core';
 import { File } from "../../interface/file";
 
 @Directive({
   selector: '[appFileInput]',
-  standalone: true
+  standalone: true,
+  host: {
+    '(change)': 'onFileChange()'
+  }
 })
 export class FileInputDirective {
-  @Output() fileSelected = new EventEmitter<File>();
+  private readonly fileInput = inject(ElementRef);
+  public fileSelected = output<File>();
 
-  constructor(private fileInput: ElementRef) {}
-
-  @HostListener('change')
   onFileChange(): void {
     const [file] = this.fileInput.nativeElement.files;
 
