@@ -1,9 +1,12 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, input } from '@angular/core';
 
 @Directive({
   selector: '[appTooltip]',
-  standalone: true
+  standalone: true,
+  host: {
+    '[title]': 'tooltip()'
+  }
 })
 export class TooltipDirective {
-  @HostBinding('title') @Input() tooltip!: string;
+  tooltip = input.required<string>();
 }
