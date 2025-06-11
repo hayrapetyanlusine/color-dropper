@@ -14,14 +14,13 @@ import { ColorData } from "../../../infrastructure/interface/colorData";
 import { DataService } from "../../../services/data.service";
 
 @Component({
-  selector: 'app-canvas',
-  standalone: true,
-  imports: [
-    NgStyle,
-    NgClass
-  ],
-  templateUrl: './canvas.component.html',
-  styleUrl: './canvas.component.css'
+    selector: 'app-canvas',
+    imports: [
+        NgStyle,
+        NgClass
+    ],
+    templateUrl: './canvas.component.html',
+    styleUrl: './canvas.component.css'
 })
 export class CanvasComponent implements AfterViewInit, OnChanges {
   dataService = inject(DataService);

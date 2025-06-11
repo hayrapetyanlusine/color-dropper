@@ -5,14 +5,13 @@ import { UploadFileComponent } from "./upload-file/upload-file.component";
 import { DataService } from "../../services/data.service";
 
 @Component({
-  selector: 'app-dropper-layout',
-  standalone: true,
-  imports: [
-    CanvasComponent,
-    ToolbarComponent,
-    UploadFileComponent
-  ],
-  template: `
+    selector: 'app-dropper-layout',
+    imports: [
+        CanvasComponent,
+        ToolbarComponent,
+        UploadFileComponent
+    ],
+    template: `
     @if (dataService.fileData()) {
 
       <app-toolbar></app-toolbar>

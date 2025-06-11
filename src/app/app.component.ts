@@ -3,11 +3,10 @@ import { RouterOutlet } from '@angular/router';
 import { DropperLayoutComponent } from "./shared/components/dropper-layout.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [DropperLayoutComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    imports: [DropperLayoutComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'color-dropper';

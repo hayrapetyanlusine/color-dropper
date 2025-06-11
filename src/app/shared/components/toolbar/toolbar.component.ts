@@ -5,14 +5,13 @@ import { FileInputDirective } from "../../directives/file-input.directive";
 import { DataService } from "../../../services/data.service";
 
 @Component({
-  selector: 'app-toolbar',
-  standalone: true,
-  imports: [
-    TooltipDirective,
-    FileInputDirective
-  ],
-  templateUrl: './toolbar.component.html',
-  styleUrl: './toolbar.component.css'
+    selector: 'app-toolbar',
+    imports: [
+        TooltipDirective,
+        FileInputDirective
+    ],
+    templateUrl: './toolbar.component.html',
+    styleUrl: './toolbar.component.css'
 })
 export class ToolbarComponent {
   dataService = inject(DataService);
