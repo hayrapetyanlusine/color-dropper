@@ -24,7 +24,7 @@ import { DataService } from "../../../services/data.service";
     styleUrl: './upload-file.component.css'
 })
 export class UploadFileComponent {
-  dataService = inject(DataService);
+  public readonly dataService = inject(DataService);
 
   onFileSelected(file: File): void {
     this.dataService.updateFileData(file);

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { TooltipDirective } from "../../directives/tooltip.directive";
 import { File } from "../../../interface/file";
 import { FileInputDirective } from "../../directives/file-input.directive";
@@ -11,14 +11,14 @@ import { DataService } from "../../../services/data.service";
     styleUrl: './toolbar.component.css'
 })
 export class ToolbarComponent {
-  dataService = inject(DataService);
-  isCopied = false;
+  public readonly dataService = inject(DataService);
+  public isCopied = signal(false);
 
   copyColorToClipboard(): void {
     navigator.clipboard.writeText(this.dataService.color())
       .then(() => {
-        this.isCopied = true;
-        setTimeout(() => this.isCopied = false, 2000);
+        this.isCopied.set(true);
+        setTimeout(() => this.isCopied.set(false), 2000);
       })
       .catch((err) => console.log(err));
   }

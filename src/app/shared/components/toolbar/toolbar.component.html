@@ -1,9 +1,10 @@
 <div id="toolbar">
   <div class="tools">
-    <button class="toolbar-dropper"
-            [style.background]="dataService.activeCursor() ? 'lightblue' : ''"
-            appTooltip tooltip="dropper"
-            (click)="addCursor()"
+    <button
+      class="toolbar-dropper"
+      [style.background]="dataService.activeCursor() ? 'lightblue' : ''"
+      appTooltip tooltip="dropper"
+      (click)="addCursor()"
     >
       <img src="../../../../assets/color-picker.svg" alt="color-picker"/>
     </button>
@@ -17,13 +18,14 @@
   <div class="toolbar-color">
     <div class="color-box" [style.background-color]="dataService.color()"></div>
     <span class="color-value-hex">{{ dataService.color() }}</span>
-    <img src="../../../../assets/copy.svg"
-         alt="copy"
-         appTooltip tooltip="copy"
-         data-copy="copy-button"
-         (click)="copyColorToClipboard()"
+    <img
+      src="../../../../assets/copy.svg"
+      alt="copy"
+      appTooltip tooltip="copy"
+      data-copy="copy-button"
+      (click)="copyColorToClipboard()"
     />
-    @if (isCopied) {
+    @if (isCopied()) {
       <span class="copied-message">Coped</span>
     }
   </div>
