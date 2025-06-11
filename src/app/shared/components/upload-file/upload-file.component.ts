@@ -5,23 +5,22 @@ import { DataService } from "../../../services/data.service";
 
 @Component({
     selector: 'app-upload-file',
-    imports: [
-        FileInputDirective
-    ],
+    imports: [FileInputDirective],
     template: `
-    <div id="upload-image" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
-      <div id="upload-image-input">
-        Drag files here or press Upload
-        <label>
-          Upload
-          <input type="file"
-                 appFileInput
-                 (fileSelected)="onFileSelected($event)"
-          >
-        </label>
+      <div id="upload-image" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+        <div id="upload-image-input">
+          Drag files here or press Upload
+          <label>
+            Upload
+            <input
+              type="file"
+              appFileInput
+              (fileSelected)="onFileSelected($event)"
+            >
+          </label>
+        </div>
       </div>
-    </div>
-  `,
+    `,
     styleUrl: './upload-file.component.css'
 })
 export class UploadFileComponent {

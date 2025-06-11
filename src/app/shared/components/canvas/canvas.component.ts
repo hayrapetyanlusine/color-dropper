@@ -15,10 +15,7 @@ import { DataService } from "../../../services/data.service";
 
 @Component({
     selector: 'app-canvas',
-    imports: [
-        NgStyle,
-        NgClass
-    ],
+    imports: [NgStyle, NgClass],
     templateUrl: './canvas.component.html',
     styleUrl: './canvas.component.css'
 })

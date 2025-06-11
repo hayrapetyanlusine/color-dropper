@@ -6,20 +6,14 @@ import { DataService } from "../../services/data.service";
 
 @Component({
     selector: 'app-dropper-layout',
-    imports: [
-        CanvasComponent,
-        ToolbarComponent,
-        UploadFileComponent
-    ],
+    imports: [CanvasComponent, ToolbarComponent, UploadFileComponent],
     template: `
-    @if (dataService.fileData()) {
-
-      <app-toolbar></app-toolbar>
-      <app-canvas [imageData]="dataService.fileData()"></app-canvas>
-
-    } @else {
-      <app-upload-file></app-upload-file>
-    }
+      @if (dataService.fileData()) {
+        <app-toolbar />
+        <app-canvas [imageData]="dataService.fileData()" />
+      } @else {
+        <app-upload-file />
+      }
   `,
     styles: ``
 })

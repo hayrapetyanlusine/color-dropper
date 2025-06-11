@@ -6,10 +6,7 @@ import { DataService } from "../../../services/data.service";
 
 @Component({
     selector: 'app-toolbar',
-    imports: [
-        TooltipDirective,
-        FileInputDirective
-    ],
+    imports: [TooltipDirective, FileInputDirective],
     templateUrl: './toolbar.component.html',
     styleUrl: './toolbar.component.css'
 })
