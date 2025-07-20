@@ -5,9 +5,9 @@ import { File } from "../interface/file";
   providedIn: 'root'
 })
 export class DataService {
-  fileData = signal<File | null>(null);
-  activeCursor = signal(false);
-  color = signal("rgb(0,0,0)");
+  public fileData = signal<File | null>(null);
+  public activeCursor = signal(false);
+  public color = signal("rgb(0,0,0)");
 
   updateFileData(data: File | null): void {
     this.fileData.set(data);
